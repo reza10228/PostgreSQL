@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+
+  db:
+        image: postgres:latest
+        container_name: postgres
+        restart: always
+        environment:
+                - POSTGRES_USER=srcaccess
+                - POSTGRES_PASSWORD=YOURPASSWORD
+                - POSTGRES_DB=MYDB
+        ports:
+                - "5432:5432"
+        volumes:
+                - /home/postgres/MYDB:/var/lib/postgresql/data
+        networks:
+                - my_service
+
+networks:
+  my_service:
+    external: true
